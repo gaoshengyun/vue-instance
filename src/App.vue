@@ -2,8 +2,9 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/tab">Tab</router-link> | 
-      <router-link to="/qqfriends">qqfriends</router-link>
+      <router-link to="/tab">选项卡</router-link> | 
+      <router-link to="/qqfriends">QQ好友</router-link> | 
+      <router-link to="/chuansuokuang">穿梭框</router-link>
     </div>
     <router-view/>
   </div>
