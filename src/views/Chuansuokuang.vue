@@ -60,24 +60,12 @@ export default {
     TransferList
   },
   methods: {
-    /**
-     * 目标数据到源数据
-     */
+
     targetToOrigin(){ 
       // 找到目标中选中，放在源列表中
-      let checkedItem = this.data.targetData.filter(item => item.checked).map((item) => {
-          return {
-            ...item,
-            checked: false
-          }
-        })
-
-        console.log(checkedItem); //[{},{}]
-        this.data.originData.push(...checkedItem)
-
-        // 把右边选中的过滤掉
-
-        this.data.targetData = this.data.targetData.filter(item => !item.checked)
+      
+      this.objToObj(this.data.targetData,this.data.originData)
+      this.data.targetData = this.data.targetData.filter(item => !item.checked)
 
 
     },
@@ -85,16 +73,21 @@ export default {
      * 源数据到目标数据
      */
     originToTarget(){ 
-      let checkedItem = this.data.originData.filter(item => item.checked).map(item => {
-        return {
-          ...item,
-          checked: false
-        }
-      })
-
-      this.data.targetData.push(...checkedItem)
+      this.objToObj(this.data.originData,this.data.targetData)
 
       this.data.originData = this.data.originData.filter(item => !item.checked)
+    },
+
+    objToObj(obj1,obj2){
+      let checkedItem = obj1.filter(item => item.checked).map((item) => {
+          return {
+            ...item,
+            checked: false
+          }
+        })
+
+        console.log(checkedItem); //[{},{}]
+        obj2.push(...checkedItem)
     }
   },
 };
